@@ -1,4 +1,4 @@
-const Room = () => (
+const Offer = () => (
   <div className="page">
     <header className="header">
       <div className="container">
@@ -334,4 +334,4 @@ const Room = () => (
   </div>
 );
 
-export default Room;
+export default Offer;
