@@ -1,0 +1,5 @@
+# Ignore artifacts:
+markup/
+public/
+/node_modules
+/build

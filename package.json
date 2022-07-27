@@ -30,11 +30,20 @@
     "extends": [
       "react-app",
       "react-app/jest",
-      "htmlacademy/react-typescript"
+      "htmlacademy/react-typescript",
+      "prettier"
     ],
     "rules": {
       "no-console": "off"
     }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "endOfLine": "lf",
+    "arrowParens": "always",
+    "semi": true,
+    "trailingComma": "es5",
+    "printWidth": 120
   },
   "browserslist": {
     "production": [
@@ -49,6 +58,8 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-htmlacademy": "^6.0.0"
+    "eslint-config-htmlacademy": "^6.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "2.7.1"
   }
 }
