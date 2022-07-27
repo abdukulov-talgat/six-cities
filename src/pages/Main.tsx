@@ -1,54 +1,20 @@
 import Header from '../components/Header/Header';
 import HeaderNav from '../components/HeaderNav/HeaderNav';
 import Logo from '../components/Logo/Logo';
+import Tabs from '../components/Tabs/Tabs';
 
 const Main = () => (
   <div className="page page--gray page--main">
     <Header>
       <div className="header__left">
-        <Logo isActive />
+        <Logo isActive/>
       </div>
-      <HeaderNav />
+      <HeaderNav/>
     </Header>
 
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
-      <div className="tabs">
-        <section className="locations container">
-          <ul className="locations__list tabs__list">
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Paris</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Cologne</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Brussels</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active">
-                <span>Amsterdam</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Hamburg</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Dusseldorf</span>
-              </a>
-            </li>
-          </ul>
-        </section>
-      </div>
+      <Tabs/>
       <div className="cities">
         <div className="cities__places-container container">
           <section className="cities__places places">
@@ -76,7 +42,7 @@ const Main = () => (
                 </div>
                 <div className="cities__image-wrapper place-card__image-wrapper">
                   <a href="#">
-                    <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image" />
+                    <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image"/>
                   </a>
                 </div>
                 <div className="place-card__info">
@@ -94,7 +60,7 @@ const Main = () => (
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={{ width: '80%' }}></span>
+                      <span style={{width: '80%'}}></span>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -108,7 +74,7 @@ const Main = () => (
               <article className="cities__card place-card">
                 <div className="cities__image-wrapper place-card__image-wrapper">
                   <a href="#">
-                    <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image" />
+                    <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image"/>
                   </a>
                 </div>
                 <div className="place-card__info">
@@ -126,7 +92,7 @@ const Main = () => (
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={{ width: '80%' }}></span>
+                      <span style={{width: '80%'}}></span>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -140,7 +106,7 @@ const Main = () => (
               <article className="cities__card place-card">
                 <div className="cities__image-wrapper place-card__image-wrapper">
                   <a href="#">
-                    <img className="place-card__image" src="img/apartment-02.jpg" width="260" height="200" alt="Place image" />
+                    <img className="place-card__image" src="img/apartment-02.jpg" width="260" height="200" alt="Place image"/>
                   </a>
                 </div>
                 <div className="place-card__info">
@@ -158,7 +124,7 @@ const Main = () => (
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={{ width: '80%' }}></span>
+                      <span style={{width: '80%'}}></span>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -175,7 +141,7 @@ const Main = () => (
                 </div>
                 <div className="cities__image-wrapper place-card__image-wrapper">
                   <a href="#">
-                    <img className="place-card__image" src="img/apartment-03.jpg" width="260" height="200" alt="Place image" />
+                    <img className="place-card__image" src="img/apartment-03.jpg" width="260" height="200" alt="Place image"/>
                   </a>
                 </div>
                 <div className="place-card__info">
@@ -193,7 +159,7 @@ const Main = () => (
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={{ width: '100%' }}></span>
+                      <span style={{width: '100%'}}></span>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -207,7 +173,7 @@ const Main = () => (
               <article className="cities__card place-card">
                 <div className="cities__image-wrapper place-card__image-wrapper">
                   <a href="#">
-                    <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image" />
+                    <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image"/>
                   </a>
                 </div>
                 <div className="place-card__info">
@@ -225,7 +191,7 @@ const Main = () => (
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={{ width: '80%' }}></span>
+                      <span style={{width: '80%'}}></span>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>

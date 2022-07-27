@@ -5,14 +5,14 @@ import { removeToken, saveToken } from '../services/token';
 import BackendApi from '../services/BackendApi/BackendApi';
 
 
-type User = {
+type UserState = {
   isAuth: boolean,
   isLoading: boolean,
   error: string | null,
   authInfo: AuthInfo,
 };
 
-const initialState: User = {
+const initialState: UserState = {
   isAuth: false,
   isLoading: false,
   error: null,
@@ -89,7 +89,7 @@ const userSlice = createSlice({
       .addCase(thunkLogout.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(thunkLogout.fulfilled, (state, action) => {
+      .addCase(thunkLogout.fulfilled, (state, _) => {
         state.isLoading = false;
         state.isAuth = false;
       })
@@ -103,7 +103,7 @@ const userSlice = createSlice({
 });
 
 
-export type { User };
+export type { UserState };
 export default userSlice.reducer;
 
 export const selectUser = (state: RootState) => state.user;

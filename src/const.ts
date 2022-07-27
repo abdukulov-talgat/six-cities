@@ -11,3 +11,12 @@ export enum ApiRoute {
   CheckToken = '/login',
   Logout = '/logout',
 }
+
+export enum City {
+  Paris = 'Paris',
+  Cologne = 'Cologne',
+  Brussels = 'Brussels',
+  Amsterdam = 'Amsterdam',
+  Hamburg = 'Hamburg',
+  Dusseldorf = 'Dusseldorf',
+}

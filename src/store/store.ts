@@ -1,11 +1,13 @@
 import { configureStore, AnyAction, ThunkAction } from '@reduxjs/toolkit';
 import BackendApi from '../services/BackendApi/BackendApi';
 import userReducer from './userSlice';
+import citiesReducer from './citiesSlice';
 
 
 const store = configureStore({
   reducer: {
     user: userReducer,
+    cities: citiesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
