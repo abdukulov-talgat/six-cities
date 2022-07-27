@@ -8,7 +8,7 @@ const NotFound = () => (
       <span style={{ color: 'green' }}>{window.location.href}</span>
       &nbsp;not found
     </h1>
-    <Link style={{fontSize: '2rem', textDecoration: 'underline'}} to={AppRoute.Home()} >Go to Home page</Link>
+    <Link style={{fontSize: '2rem', textDecoration: 'underline'}} to={AppRoute.Home} >Go to Home page</Link>
   </div>
 );
 
