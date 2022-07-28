@@ -1,11 +1,10 @@
-import { ApiRoute } from './../../const';
+import { ApiRoute } from '../../const';
 import http from './http';
-import { UserCredentials, AuthInfo } from './../../types/models';
-
+import { UserCredentials, AuthInfo, Place } from '../../types/models';
 
 export default class BackendApi {
-
-  async login(user: UserCredentials){
+  //User
+  async login(user: UserCredentials) {
     return http.post<AuthInfo>(ApiRoute.Login, user);
   }
 
@@ -16,5 +15,13 @@ export default class BackendApi {
   async checkToken() {
     return http.get<AuthInfo>(ApiRoute.CheckToken);
   }
-}
 
+  //Places
+  async fetchPlaces() {
+    return http.get<Place[]>(ApiRoute.Places);
+  }
+
+  async changeFavoriteStatus(id: number, status: boolean) {
+    return http.post<Place>(`${ApiRoute.ChangeFavoriteStatus}/${id}/${Number(status)}`);
+  }
+}

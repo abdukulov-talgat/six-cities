@@ -5,24 +5,26 @@ import store from './store/store';
 import { Provider } from 'react-redux';
 import { getToken } from './services/token';
 import { thunkCheckToken } from './store/userSlice';
-
+import { thunkFetchPlaces } from './store/placesSlice';
 
 window.addEventListener('rejectionhandled', (evt) => {
   console.log('Non caught promise Error. Shame on me');
   console.log(evt.reason);
 });
 
-const token = getToken();
-if (token) {
-  store.dispatch(thunkCheckToken());
-}
+const start = async () => {
+  const token = getToken();
+  if (token) {
+    await store.dispatch(thunkCheckToken());
+  }
+  await store.dispatch(thunkFetchPlaces());
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLDivElement
-);
+  const root = ReactDOM.createRoot(document.getElementById('root') as HTMLDivElement);
+  root.render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+};
 
-root.render(
-  <Provider store={store}>
-    <App/>
-  </Provider>
-);
+start();
