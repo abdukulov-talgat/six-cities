@@ -1,6 +1,6 @@
 import { ApiRoute } from '../../const';
 import http from './http';
-import { UserCredentials, AuthInfo, Place, ReviewGet } from '../../types/models';
+import { UserCredentials, AuthInfo, Place, ReviewGet, ReviewPost } from '../../types/models';
 
 export default class BackendApi {
   //User
@@ -28,5 +28,9 @@ export default class BackendApi {
   //Reviews
   async fetchReviews(id: number) {
     return http.get<ReviewGet[]>(`${ApiRoute.Reviews}/${id}`);
+  }
+
+  async saveReview(id: number, review: ReviewPost) {
+    return http.post<ReviewGet[]>(`${ApiRoute.Reviews}/${id}`, review);
   }
 }

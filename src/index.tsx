@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 import { getToken } from './services/token';
 import { thunkCheckToken } from './store/userSlice';
 import { thunkFetchPlaces } from './store/placesSlice';
+import { ToastContainer } from 'react-toastify';
+import { TOAST_DURATION } from './const';
 
 window.addEventListener('rejectionhandled', (evt) => {
   console.log('Non caught promise Error. Shame on me');
@@ -24,6 +26,7 @@ const start = async () => {
     <React.StrictMode>
       <Provider store={store}>
         <App />
+        <ToastContainer autoClose={TOAST_DURATION} />
       </Provider>
     </React.StrictMode>
   );

@@ -9,6 +9,12 @@
   animation: infinite 1s rotate-360 linear;
 }
 
+.spinner--small {
+  width: 19px;
+  height: 19px;
+  border-width: 2px;
+}
+
 @keyframes rotate-360 {
   from {
     transform: rotate(0deg);
