@@ -75,3 +75,5 @@ export const selectFilteredAndSortedPlaces = (state: RootState) =>
 
 export const selectPlaceById = (placeId: number) => (state: RootState) =>
   state.places.items.find((item) => item.id === placeId);
+
+export const selectFavoriteCount = (state: RootState) => state.places.items.filter((place) => place.isFavorite).length;

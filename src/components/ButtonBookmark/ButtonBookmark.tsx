@@ -5,11 +5,12 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { selectIsAuth } from '../../store/userSlice';
 import { useWaitCursor } from '../../hooks/useWaitCursor';
+import './ButtomBookmark.css';
 
 type ButtonBookmarkProps = {
   placeId: number;
   size?: keyof typeof Size;
-  className: string;
+  baseClass: string;
 };
 
 const Size = {
@@ -23,7 +24,7 @@ const Size = {
   },
 };
 
-const ButtonBookmark = ({ placeId, className, size = 'small' }: ButtonBookmarkProps) => {
+const ButtonBookmark = ({ placeId, baseClass, size = 'small' }: ButtonBookmarkProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const place = useAppSelector(selectPlaceById(placeId));
@@ -36,11 +37,12 @@ const ButtonBookmark = ({ placeId, className, size = 'small' }: ButtonBookmarkPr
   }
   const isFavorite = place.isFavorite;
 
+  const btnClasses = isFavorite
+    ? `button ${baseClass}__bookmark-button ${baseClass}__bookmark-button--active`
+    : `button ${baseClass}__bookmark-button`;
+
   const handleButtonClick = async (evt: React.MouseEvent<HTMLButtonElement>) => {
     evt.preventDefault();
-    // if(btnRef.current === null) {
-    //   return;
-    // }
 
     if (!isAuth) {
       return navigate(AppRoute.Login);
@@ -54,8 +56,8 @@ const ButtonBookmark = ({ placeId, className, size = 'small' }: ButtonBookmarkPr
   };
 
   return (
-    <button className={className} type="button" onClick={handleButtonClick} ref={btnRef}>
-      <svg className="place-card__bookmark-icon" width={Size[size].width} height={Size[size].height}>
+    <button className={btnClasses} type="button" onClick={handleButtonClick} ref={btnRef}>
+      <svg className={`${baseClass}__bookmark-icon`} width={Size[size].width} height={Size[size].height}>
         <use xlinkHref="#icon-bookmark"></use>
       </svg>
       <span className="visually-hidden">To bookmarks</span>

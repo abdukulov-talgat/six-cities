@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { selectUser, thunkLogout } from '../../store/userSlice';
-import { thunkFetchPlaces } from '../../store/placesSlice';
+import { selectFavoriteCount, thunkFetchPlaces } from '../../store/placesSlice';
 
 const HeaderNav = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectUser);
+  const favoriteCount = useAppSelector(selectFavoriteCount);
 
   const handleLogoutClick = async (evt: React.MouseEvent<HTMLAnchorElement>) => {
     evt.preventDefault();
@@ -29,7 +30,7 @@ const HeaderNav = () => {
                   <img src={user.authInfo.avatarUrl} alt={user.authInfo.name} />
                 </div>
                 <span className="header__user-name user__name">{user.authInfo.email}</span>
-                <span className="header__favorite-count">3</span>
+                <span className="header__favorite-count">{favoriteCount}</span>
               </Link>
             </li>
             <li className="header__nav-item">

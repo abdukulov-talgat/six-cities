@@ -1,6 +1,6 @@
 import { ApiRoute } from '../../const';
 import http from './http';
-import { UserCredentials, AuthInfo, Place } from '../../types/models';
+import { UserCredentials, AuthInfo, Place, ReviewGet } from '../../types/models';
 
 export default class BackendApi {
   //User
@@ -23,5 +23,10 @@ export default class BackendApi {
 
   async changeFavoriteStatus(id: number, status: boolean) {
     return http.post<Place>(`${ApiRoute.ChangeFavoriteStatus}/${id}/${Number(status)}`);
+  }
+
+  //Reviews
+  async fetchReviews(id: number) {
+    return http.get<ReviewGet[]>(`${ApiRoute.Reviews}/${id}`);
   }
 }

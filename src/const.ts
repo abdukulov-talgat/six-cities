@@ -14,6 +14,7 @@ export enum ApiRoute {
   Places = '/hotels',
   ChangeFavoriteStatus = '/favorite',
   Offer = '/offer',
+  Reviews = '/comments',
 }
 
 export enum CityName {
@@ -32,12 +33,12 @@ export const enum SortType {
   TopRated = 'TopRated',
 }
 
-export enum PlaceType {
-  Apartment = 'Apartment',
-  Room = 'Private Room',
-  House = 'House',
-  Hotel = 'Hotel',
-}
+export const mapPlaceTypeToName = {
+  apartment: 'Apartment',
+  room: 'Private Room',
+  house: 'House',
+  hotel: 'Hotel',
+};
 
 export const CityCoordinates = {
   [CityName.Paris]: {

@@ -1,14 +1,15 @@
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import LoginForm from '../components/LoginForm/LoginForm';
 import Logo from '../components/Logo/Logo';
 import { AppRoute } from '../const';
 import { useAppSelector } from '../hooks/hooks';
 import { selectIsAuth } from '../store/userSlice';
+import { selectActiveFilter } from '../store/filtersSlice';
 
 const Login = () => {
   const isAuth = useAppSelector(selectIsAuth);
-
+  const activeFilter = useAppSelector(selectActiveFilter);
 
   if (isAuth) {
     return <Navigate to={AppRoute.Home} replace />;
@@ -30,9 +31,9 @@ const Login = () => {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="#">
-                <span>Amsterdam</span>
-              </a>
+              <Link className="locations__item-link" to={AppRoute.Home}>
+                <span>{activeFilter}</span>
+              </Link>
             </div>
           </section>
         </div>

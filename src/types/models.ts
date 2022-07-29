@@ -1,4 +1,4 @@
-import { CityName, PlaceType } from '../const';
+import { CityName, mapPlaceTypeToName } from '../const';
 
 export type AuthInfo = {
   id: number;
@@ -22,7 +22,7 @@ export type Place = {
   bedrooms: number;
   description: string;
   goods: string[];
-  host: Host;
+  host: User;
   images: string[];
   isFavorite: boolean;
   isPremium: boolean;
@@ -38,10 +38,23 @@ export type City = {
   location: Location;
 };
 
-export type Host = Omit<AuthInfo, 'email' | 'token'>;
+export type User = Omit<AuthInfo, 'email' | 'token'>;
 
 export type Location = {
   latitude: number;
   longitude: number;
   zoom: number;
 };
+
+export type PlaceType = 'apartment' | 'room' | 'house' | 'hotel';
+
+export type ReviewPost = {
+  comment: string;
+  rating: number;
+};
+
+export type ReviewGet = {
+  id: number;
+  date: string;
+  user: User;
+} & ReviewPost;

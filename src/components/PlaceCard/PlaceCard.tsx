@@ -3,11 +3,12 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { selectPlaceById } from '../../store/placesSlice';
 import { Link, Navigate } from 'react-router-dom';
 import { ApiRoute, AppRoute } from '../../const';
-import PlaceCardMark from '../PlaceCardMark/PlaceCardMark';
-import PlaceCardRating from '../PlaceCardRating/PlaceCardRating';
+import Mark from '../Mark/Mark';
+import Rating from '../Rating/Rating';
 import ButtonBookmark from '../ButtonBookmark/ButtonBookmark';
 import { setHoveredPlace } from '../../store/hoveredPlaceSlice';
 import { mapPlaceToPoint } from '../../utils';
+import Price from '../Price/Price';
 
 type PlaceCardProps = {
   placeId: number;
@@ -21,14 +22,9 @@ const PlaceCard = ({ placeId }: PlaceCardProps) => {
     return <Navigate to={AppRoute.NotFound} />;
   }
 
-  const favoriteClasses =
-    place?.isFavorite || false
-      ? 'place-card__bookmark-button button place-card__bookmark-button--active'
-      : 'place-card__bookmark-button button';
-
   return (
     <article className="cities__card place-card" onMouseEnter={() => dispatch(setHoveredPlace(mapPlaceToPoint(place)))}>
-      {place.isPremium && <PlaceCardMark />}
+      {place.isPremium && <Mark baseClass="place-card" />}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={ApiRoute.Offer.concat(`/${placeId}`)}>
           <img className="place-card__image" src={place.previewImage} width="260" height="200" alt={place.title} />
@@ -36,13 +32,10 @@ const PlaceCard = ({ placeId }: PlaceCardProps) => {
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
-          <div className="place-card__price">
-            <b className="place-card__price-value">&euro;{place.price}</b>
-            <span className="place-card__price-text">&#47;&nbsp;night</span>
-          </div>
-          <ButtonBookmark placeId={placeId} className={favoriteClasses} />
+          <Price price={place.price} baseClass="place-card" />
+          <ButtonBookmark placeId={placeId} baseClass="place-card" />
         </div>
-        <PlaceCardRating starsCount={Math.round(place.rating)} />
+        <Rating rating={place.rating} baseClass="place-card" />
         <h2 className="place-card__name">
           <Link to={ApiRoute.Offer.concat(`/${placeId}`)}>{place.title}</Link>
         </h2>
