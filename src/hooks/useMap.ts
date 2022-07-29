@@ -1,4 +1,4 @@
-import { useEffect, useState, MutableRefObject } from 'react';
+import { useEffect, useState, MutableRefObject, useRef } from 'react';
 import { LayerGroup, Map, TileLayer } from 'leaflet';
 import { CityCoordinates, CityName } from '../const';
 
@@ -10,9 +10,10 @@ function useMap(
 ): readonly [Map | null, LayerGroup | null] {
   const [map, setMap] = useState<Map | null>(null);
   const [markerGroup, setMarkerGroup] = useState<LayerGroup | null>(null);
+  const mapIsInit = useRef(false);
 
   useEffect(() => {
-    if (mapRef.current !== null && map === null) {
+    if (mapRef.current !== null && map === null && !mapIsInit.current) {
       const instance = new Map(mapRef.current, {
         center: {
           lat: CityCoordinates[city].lat,
@@ -32,6 +33,7 @@ function useMap(
 
       setMap(instance);
       setMarkerGroup(layerMarkers);
+      mapIsInit.current = true;
     }
   }, [mapRef, map, city]);
 
