@@ -1,11 +1,15 @@
 import { useEffect, useState, MutableRefObject } from 'react';
-import { Map, TileLayer } from 'leaflet';
+import { LayerGroup, Map, TileLayer } from 'leaflet';
 import { CityCoordinates, CityName } from '../const';
 
 const ZOOM_LEVEL = 13;
 
-function useMap(mapRef: MutableRefObject<HTMLElement | null>, city: CityName): Map | null {
+function useMap(
+  mapRef: MutableRefObject<HTMLElement | null>,
+  city: CityName
+): readonly [Map | null, LayerGroup | null] {
   const [map, setMap] = useState<Map | null>(null);
+  const [markerGroup, setMarkerGroup] = useState<LayerGroup | null>(null);
 
   useEffect(() => {
     if (mapRef.current !== null && map === null) {
@@ -23,8 +27,11 @@ function useMap(mapRef: MutableRefObject<HTMLElement | null>, city: CityName): M
       });
 
       instance.addLayer(layer);
+      const layerMarkers = new LayerGroup();
+      instance.addLayer(layerMarkers);
 
       setMap(instance);
+      setMarkerGroup(layerMarkers);
     }
   }, [mapRef, map, city]);
 
@@ -32,7 +39,7 @@ function useMap(mapRef: MutableRefObject<HTMLElement | null>, city: CityName): M
     map?.setView(CityCoordinates[city], ZOOM_LEVEL);
   }, [city, map]);
 
-  return map;
+  return [map, markerGroup] as const;
 }
 
 export default useMap;

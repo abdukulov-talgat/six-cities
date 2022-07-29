@@ -28,10 +28,11 @@ const currentCustomIcon = new Icon({
 const Map = ({ className, points, selectedPoint }: MapProps) => {
   const activeFilter = useAppSelector(selectActiveFilter);
   const mapRef = useRef<HTMLElement | null>(null);
-  const map = useMap(mapRef, activeFilter);
+  const [map, markerGroup] = useMap(mapRef, activeFilter);
 
   useEffect(() => {
-    if (map) {
+    if (map && markerGroup) {
+      markerGroup.clearLayers();
       points.forEach((point) => {
         const marker = new Marker({
           lat: point.lat,
@@ -44,31 +45,12 @@ const Map = ({ className, points, selectedPoint }: MapProps) => {
               ? currentCustomIcon
               : defaultCustomIcon
           )
-          .addTo(map);
+          .addTo(markerGroup);
       });
     }
-  }, [activeFilter, map, points, selectedPoint]);
+  }, [activeFilter, map, markerGroup, points, selectedPoint]);
 
   return <section className={className.concat(' map')} ref={mapRef}></section>;
 };
 
 export default Map;
-
-// useEffect(() => {
-//   if (map) {
-//     points.forEach((point) => {
-//       const marker = new Marker({
-//         lat: point.lat,
-//         lng: point.lng,
-//       });
-//
-//       marker
-//         .setIcon(
-//           selectedPoint !== undefined && point.lat === selectedPoint.lat && point.lng === selectedPoint.lng
-//             ? currentCustomIcon
-//             : defaultCustomIcon
-//         )
-//         .addTo(map);
-//     });
-//   }
-// }, [map, points, selectedPoint]);
