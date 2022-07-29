@@ -25,6 +25,10 @@ export default class BackendApi {
     return http.post<Place>(`${ApiRoute.ChangeFavoriteStatus}/${id}/${Number(status)}`);
   }
 
+  async fetchNearbyPlaces(id: number) {
+    return http.get<Place[]>(`${ApiRoute.Places}/${id}/nearby`);
+  }
+
   //Reviews
   async fetchReviews(id: number) {
     return http.get<ReviewGet[]>(`${ApiRoute.Reviews}/${id}`);

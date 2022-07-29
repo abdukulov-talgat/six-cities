@@ -12,9 +12,10 @@ import Price from '../Price/Price';
 
 type PlaceCardProps = {
   placeId: number;
+  baseClass: string;
 };
 
-const PlaceCard = ({ placeId }: PlaceCardProps) => {
+const Card = ({ placeId, baseClass }: PlaceCardProps) => {
   const place = useAppSelector(selectPlaceById(placeId));
   const dispatch = useAppDispatch();
 
@@ -23,9 +24,12 @@ const PlaceCard = ({ placeId }: PlaceCardProps) => {
   }
 
   return (
-    <article className="cities__card place-card" onMouseEnter={() => dispatch(setHoveredPlace(mapPlaceToPoint(place)))}>
+    <article
+      className={`${baseClass}__card place-card`}
+      onMouseEnter={() => dispatch(setHoveredPlace(mapPlaceToPoint(place)))}
+    >
       {place.isPremium && <Mark baseClass="place-card" />}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${baseClass}__image-wrapper place-card__image-wrapper`}>
         <Link to={ApiRoute.Offer.concat(`/${placeId}`)}>
           <img className="place-card__image" src={place.previewImage} width="260" height="200" alt={place.title} />
         </Link>
@@ -45,4 +49,4 @@ const PlaceCard = ({ placeId }: PlaceCardProps) => {
   );
 };
 
-export default PlaceCard;
+export default Card;

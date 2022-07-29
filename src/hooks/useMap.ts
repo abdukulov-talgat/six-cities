@@ -20,6 +20,7 @@ function useMap(
           lng: CityCoordinates[city].lng,
         },
         zoom: ZOOM_LEVEL,
+        scrollWheelZoom: false,
       });
 
       const layer = new TileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
