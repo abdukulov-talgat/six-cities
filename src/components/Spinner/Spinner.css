@@ -23,3 +23,9 @@
     transform: rotate(360deg);
   }
 }
+
+.favorites__loading-box {
+  display: flex;
+  padding: 20px 0;
+  justify-content: center;
+}

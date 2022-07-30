@@ -1,4 +1,4 @@
-import { CityName, mapPlaceTypeToName } from '../const';
+import { CityName } from '../const';
 
 export type AuthInfo = {
   id: number;
@@ -58,3 +58,7 @@ export type ReviewGet = {
   date: string;
   user: User;
 } & ReviewPost;
+
+export type CityGroups = {
+  [v in CityName]: Place[];
+};

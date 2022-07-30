@@ -13,6 +13,7 @@ export enum ApiRoute {
   Logout = '/logout',
   Places = '/hotels',
   ChangeFavoriteStatus = '/favorite',
+  FavoritePlaces = '/favorite',
   Offer = '/offer',
   Reviews = '/comments',
 }

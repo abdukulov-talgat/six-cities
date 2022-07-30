@@ -13,9 +13,10 @@ import Price from '../Price/Price';
 type PlaceCardProps = {
   placeId: number;
   baseClass: string;
+  imageSize?: 'small' | 'medium';
 };
 
-const Card = ({ placeId, baseClass }: PlaceCardProps) => {
+const Card = ({ placeId, baseClass, imageSize = 'medium' }: PlaceCardProps) => {
   const place = useAppSelector(selectPlaceById(placeId));
   const dispatch = useAppDispatch();
 
@@ -31,9 +32,16 @@ const Card = ({ placeId, baseClass }: PlaceCardProps) => {
       {place.isPremium && <Mark baseClass="place-card" />}
       <div className={`${baseClass}__image-wrapper place-card__image-wrapper`}>
         <Link to={ApiRoute.Offer.concat(`/${placeId}`)}>
-          <img className="place-card__image" src={place.previewImage} width="260" height="200" alt={place.title} />
+          <img
+            className="place-card__image"
+            src={place.previewImage}
+            width={imageSize === 'medium' ? '260' : '150'}
+            height={imageSize === 'medium' ? '200' : '110'}
+            alt={place.title}
+          />
         </Link>
       </div>
+
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <Price price={place.price} baseClass="place-card" />
