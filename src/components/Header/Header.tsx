@@ -1,15 +1,13 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 type HeaderProps = {
-  children?: ReactNode
-}
+  children?: ReactNode;
+};
 
 const Header = ({ children }: HeaderProps) => (
   <header className="header">
     <div className="container">
-      <div className="header__wrapper">
-        {children}
-      </div>
+      <div className="header__wrapper">{children}</div>
     </div>
   </header>
 );

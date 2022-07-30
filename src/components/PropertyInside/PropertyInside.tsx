@@ -17,4 +17,9 @@ const PropertyInside = ({ goods }: PropertyInsideProps) => (
   </div>
 );
 
-export default PropertyInside;
+export default React.memo(PropertyInside, (prev, next) => {
+  if (prev.goods.length !== next.goods.length) {
+    return false;
+  }
+  return !prev.goods.some((prevGood, index) => prevGood !== next.goods[index]);
+});

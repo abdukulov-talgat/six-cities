@@ -16,4 +16,4 @@ const Features = ({ placeType, bedrooms, adults }: FeaturesProps) => (
   </ul>
 );
 
-export default Features;
+export default React.memo(Features);

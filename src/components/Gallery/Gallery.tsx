@@ -16,4 +16,14 @@ const Gallery = ({ images }: GalleryProps) => (
   </div>
 );
 
-export default Gallery;
+export default React.memo(Gallery, (prev, next) => {
+  if (prev.images.length !== next.images.length) {
+    return false;
+  }
+  for (let i = 0; i < prev.images.length; i++) {
+    if (prev.images[i] !== next.images[i]) {
+      return false;
+    }
+  }
+  return true;
+});

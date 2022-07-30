@@ -57,4 +57,4 @@ const Card = ({ placeId, baseClass, imageSize = 'medium' }: PlaceCardProps) => {
   );
 };
 
-export default Card;
+export default React.memo(Card);

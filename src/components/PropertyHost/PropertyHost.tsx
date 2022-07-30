@@ -27,4 +27,7 @@ const PropertyHost = ({ host, description }: PropertyHostProps) => {
   );
 };
 
-export default PropertyHost;
+export default React.memo(
+  PropertyHost,
+  (prev, next) => !(prev.description !== next.description || prev.host.id !== next.host.id)
+);

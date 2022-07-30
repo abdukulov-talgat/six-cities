@@ -10,4 +10,4 @@ const Spinner = ({ size = 'medium' }: SpinnerProps) => {
   return <div className={classes}></div>;
 };
 
-export default Spinner;
+export default React.memo(Spinner);

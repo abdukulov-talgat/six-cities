@@ -69,4 +69,4 @@ const PropertyReviews = ({ placeId }: PropertyReviewsProps) => {
   );
 };
 
-export default PropertyReviews;
+export default React.memo(PropertyReviews);

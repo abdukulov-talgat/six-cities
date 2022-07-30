@@ -29,4 +29,4 @@ const LocationItem = ({ name, isActive }: LocationItemProps) => {
   );
 };
 
-export default LocationItem;
+export default React.memo(LocationItem);

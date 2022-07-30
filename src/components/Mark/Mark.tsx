@@ -10,4 +10,4 @@ const Mark = ({ baseClass }: MarkProps) => (
   </div>
 );
 
-export default Mark;
+export default React.memo(Mark);
